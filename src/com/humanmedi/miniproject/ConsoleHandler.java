@@ -1,25 +1,24 @@
 package com.humanmedi.miniproject;
 
 import java.util.Scanner;
-
+ 
 /**
  * 입력 제어
  */
 public class ConsoleHandler {
 
-    public static Scanner scanner = new Scanner(System.in);
+    private Scanner scanner = new Scanner(System.in);
 
+    public static ConsoleHandler instance = new ConsoleHandler(); 
 
-    public ConsoleHandler(){
-        
-    }
+    private ConsoleHandler(){}
     
-    public static int getInt(String str) {
+    public int getInt(String str) {
 		int no = 0;
 		
 		while(true) {
 			try {
-				System.out.print(str);
+				System.out.println(str);
 				no = scanner.nextInt();
 				
 				return no;
@@ -33,3 +32,4 @@ public class ConsoleHandler {
 		}
 	}
 }
+
