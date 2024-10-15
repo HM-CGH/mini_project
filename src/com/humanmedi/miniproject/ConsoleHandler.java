@@ -7,14 +7,13 @@ import java.util.Scanner;
  */
 public class ConsoleHandler {
 
-    public static Scanner scanner = new Scanner(System.in);
+    private Scanner scanner = new Scanner(System.in);
 
+    public static ConsoleHandler instance = new ConsoleHandler(); 
 
-    public ConsoleHandler(){
-        
-    }
+    private ConsoleHandler(){}
     
-    public static int getInt(String str) {
+    public int getInt(String str) {
 		int no = 0;
 		
 		while(true) {
