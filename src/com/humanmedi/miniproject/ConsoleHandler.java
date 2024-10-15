@@ -19,7 +19,7 @@ public class ConsoleHandler {
 		
 		while(true) {
 			try {
-				System.out.println(str);
+				System.out.print(str);
 				no = scanner.nextInt();
 				
 				return no;
