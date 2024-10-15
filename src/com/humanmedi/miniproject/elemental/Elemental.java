@@ -1,5 +1,5 @@
 package com.humanmedi.miniproject.elemental;
 
-public interface Elemental {
-
+public enum Elemental {
+    FIRE, WATER, WOOD
 }
