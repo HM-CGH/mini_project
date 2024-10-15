@@ -1,9 +1,13 @@
 package com.humanmedi.miniproject;
 
+import com.humanmedi.miniproject.entity.Player;
 
 public class Main {
 	public static Main instance = new Main();
 	public static void main(String args[]) {
+		
+		GlobalDefine.player = new Player("플레이어");
+		
 		System.out.println("=======================");
 		System.out.println("=======================");
 		System.out.println("챗 게임에 오신것을 환영합니다!");
