@@ -1,13 +1,15 @@
 package com.humanmedi.miniproject.inventory;
 
 import com.humanmedi.miniproject.item.ItemStack;
+import com.humanmedi.miniproject.item.WeaponItem;
 
 /**
- * 인벤토리 핸들러
+ * 인벤토리 / 플레이어는 자동으로 인벤토리를 가집니다
  */
 public class Inventory {
 	private int _size = 10;
     private ItemStack[] _item_slot = new ItemStack[this._size];
+    private WeaponItem _main_hand = null;
     
     
     /**
@@ -89,4 +91,29 @@ public class Inventory {
     		}
     	}
     }
+
+
+    public void takeWeapon(int index) {
+    	
+    	if(!(_item_slot[index] instanceof WeaponItem)) {
+    		throw new Error("무기만 장착할 수 있습니다");
+    	}
+    	
+    	this._main_hand = (WeaponItem) _item_slot[index];
+    }
+    
+    public void takeOffWeapon() {
+    	try {
+    		this.addItem(this._main_hand);
+    		this._main_hand = null;
+    	}catch(Exception e) {
+    		throw e;
+    	}
+    }
+
+
+    public WeaponItem getMainHand() {
+    	return this._main_hand;
+    }
+
 }
