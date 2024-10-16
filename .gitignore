@@ -1,4 +1,8 @@
-/bin/
-/.idea/
+bin/
+.idea/
+
+ignore/
+
+.vscode/
 
 *.iml
