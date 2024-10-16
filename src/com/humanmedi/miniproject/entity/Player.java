@@ -38,6 +38,9 @@ public class Player implements Entity{
 		}
 		this.health += amount;
 	}
+	public void takeDamage(int amount){
+		this.health -= amount;
+	}
 	public void setHealth(float health) {
 		this.health = health;
 	}

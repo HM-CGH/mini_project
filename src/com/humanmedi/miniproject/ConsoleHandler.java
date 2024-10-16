@@ -1,5 +1,6 @@
 package com.humanmedi.miniproject;
 
+import java.util.List;
 import java.util.Scanner;
  
 /**
@@ -29,6 +30,28 @@ public class ConsoleHandler {
 				System.out.println("================================================");
 				System.out.println("================================================");
 			}
+		}
+	}
+	public void displayText(String[] explain, String[] choices){
+		System.out.println("=======================");
+		for(String text:explain){
+			System.out.println(text);
+		}
+		System.out.println("=======================");
+
+		for(int i = 0; i < choices.length; i++){
+			System.out.printf("%d. %s\n", i+1, choices[i]);
+		}
+	}
+	public void displayText(String[] explain, List<String> choices){
+		System.out.println("=======================");
+		for(String text:explain){
+			System.out.println(text);
+		}
+		System.out.println("=======================");
+
+		for(int i = 0; i < choices.size(); i++){
+			System.out.printf("%d. %s\n", i+1, choices.get(i));
 		}
 	}
 }

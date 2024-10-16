@@ -8,5 +8,5 @@ public interface MonsterSpawner {
         return monsters.get(random.nextInt(monsters.size()));
     }
 
-    void spawnMonster();
+    Monster spawnMonster();
 }

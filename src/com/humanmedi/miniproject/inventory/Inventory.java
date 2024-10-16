@@ -1,5 +1,10 @@
 package com.humanmedi.miniproject.inventory;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import com.humanmedi.miniproject.ConsoleHandler;
+import com.humanmedi.miniproject.elemental.Elemental;
 import com.humanmedi.miniproject.item.ItemStack;
 import com.humanmedi.miniproject.item.WeaponItem;
 
@@ -18,7 +23,7 @@ public class Inventory {
      * @return 위치가 유효하다면 true
      */
     private boolean isValidRange(int index) {
-    	if((index > 0) && (index < this._size)) {
+    	if((index >= 0) && (index < this._size)) {
     		return true;
     	}else {
     		return false;
@@ -82,7 +87,11 @@ public class Inventory {
      */
     public ItemStack getItem(int index) {
     	if(!this.isValidRange(index)) {
-    		throw new Error("Out Of Range");
+    		//throw new Error("Out Of Range");
+
+			System.out.println("Out Of Range");
+
+			return null;
     	}else {
     		if(_item_slot[index] == null) {
     			return null;
@@ -94,12 +103,22 @@ public class Inventory {
 
 
     public void takeWeapon(int index) {
+		if(!this.isValidRange(index)) {
+			System.out.println("적정 범위가 아닙니다.");
+			return;
+		}
     	
     	if(!(_item_slot[index] instanceof WeaponItem)) {
-    		throw new Error("무기만 장착할 수 있습니다");
+    		System.out.println("무기만 장착할 수 있습니다.");
+			return;
     	}
     	
+		System.out.println("라인출력 112");
+
     	this._main_hand = (WeaponItem) _item_slot[index];
+		_item_slot[index] = null;
+
+		System.out.println(this._main_hand.getMaterial().name() + "을 장착했다.");
     }
     
     public void takeOffWeapon() {
@@ -115,5 +134,46 @@ public class Inventory {
     public WeaponItem getMainHand() {
     	return this._main_hand;
     }
+
+	public void showInventory(){
+		String [] explain_inventory = {
+			":: 인벤토리 ::"
+		};
+
+		List<String> tmp_ch_inv = new ArrayList<>();
+
+		for(int i = 0; i < this._item_slot.length; i++){
+
+			String tmp_value;
+
+			if(this._item_slot[i] == null){
+				tmp_value = "비어있음";
+			}else{
+
+				Elemental weapon_type = null;
+
+				if(this._item_slot[i] instanceof WeaponItem){
+					WeaponItem item = (WeaponItem) this._item_slot[i];
+
+					weapon_type = item.getElemental();
+				}
+				
+				if(weapon_type != null){
+					tmp_value = this._item_slot[i].getMaterial().name() + " (Elemental :" + weapon_type.name() +")";
+				}else{
+					tmp_value = this._item_slot[i].getMaterial().name();
+				}
+
+				
+			}
+
+			tmp_ch_inv.add(tmp_value);
+		}
+	
+		//String[] choice_inventory = tmp_ch_inv;
+
+
+		ConsoleHandler.instance.displayText(explain_inventory, tmp_ch_inv);
+	}
 
 }
