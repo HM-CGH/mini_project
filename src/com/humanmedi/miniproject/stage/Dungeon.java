@@ -6,9 +6,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Dungeon implements MonsterSpawner{
-    @Override
-    public void spawnMonster(){
-        List<Monster> monster = new ArrayList<>();
+	
+	public List<Monster> monster = new ArrayList<>();
+   
+	public Dungeon() {
         monster.add(new Monster("Zombie"));
         monster.add(new Monster("Skeleton"));
         monster.add(new Monster("Creeper"));
@@ -18,10 +19,15 @@ public class Dungeon implements MonsterSpawner{
         monster.add(new Monster("Goblin"));
         monster.add(new Monster("camel"));
         monster.add(new Monster("Ender Dragon"));
+	}
+	
+	
+    public void spawnMonster(){
 
-        Monster randomMonster = getRandomMonster(monster);
 
-        Elemental randomElemental = Elemental.getElemental();
+        Monster random_monster = getRandomMonster(monster);
+
+        Elemental random_elemental = Elemental.getElemental();
 
     }
 }

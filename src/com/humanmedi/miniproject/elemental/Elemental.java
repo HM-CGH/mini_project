@@ -7,7 +7,7 @@ public enum Elemental {
 
     public static Elemental getElemental(){
         Elemental[] elementals = values();
-        int randomElemental = (int) (Math.random() * elementals.length);
-        return elementals[randomElemental];
+        int random_elemental = (int) (Math.random() * elementals.length);
+        return elementals[random_elemental];
     }
 }
